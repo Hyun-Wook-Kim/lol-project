@@ -1,0 +1,10 @@
+.side-nav{
+    position: fixed;
+    right: 0%;
+    top: 0%;
+    width: 400px;
+    height: 100vh;
+    background-color: black;
+    z-index: 99;
+    transform: translateX(100%);
+}

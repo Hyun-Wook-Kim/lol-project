@@ -1,0 +1,184 @@
+
+@mixin center-pos {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+@mixin header-white{
+    font-size: 12px;
+    color: white;
+}
+
+.header {
+    position: relative;
+    z-index: 99;
+    // top: 0%;
+    // left: 0%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px clamp(36px, 1.875vw, 54px);
+    background-color: black;
+    align-items: center;
+    .mobile-box{
+        display: none;
+    }
+    @media all and (max-width:1024px){
+        .nav{
+            display: none;
+        }
+        .icon-box{
+            display: none;
+        }
+        .mobile-box{
+            display: block;
+            i{
+                display: block;
+                width: 18px;
+                height: 18px;
+                border-top: 1px solid white;
+                border-bottom: 1px solid white;
+                position: relative;
+                &::after{
+                    content: "";
+                    width: 90%;
+                    height: 1px;
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-top: 1px solid white;
+                    border-bottom: 1px solid white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+
+    .arrow-more {
+        width: 16px;
+        height: 16px;
+        position: relative;
+        margin-left: 4px;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            width: 0px;
+            height: 0px;
+            border-top: 4px solid white;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+
+            @include center-pos()
+        }
+    }
+
+    a {
+        display: block;
+    }
+
+    .riot-logo {
+        fill: azure;
+
+        &:hover {
+            fill: red;
+        }
+    }
+
+    .league {
+        margin-left: 35px;
+        max-height: 24px;
+    }
+
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include header-white();
+    a {
+        display: block;
+        padding: 20px 15px;
+        position: relative;
+        &:hover{
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: 0%;
+                left: 0%;
+                width: 100%;
+                height: 2px;
+                border-radius: 5%;
+                background-color: rgb(0, 160, 186);
+            }
+        }
+    }
+    .d2-menu{
+        display: none;
+        min-width: 200px;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        padding: 10px 0;
+
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            background-color: black;
+            li{
+                width: 100%;
+                padding: 10px 15px;
+                cursor: pointer;
+                color: #ffffff70;
+                &:hover{
+                    color: #fff;
+                }
+                
+            }
+        }
+    }
+    a.nav-menu{
+        &:hover{
+            .d2-menu{
+                display: block;
+            }
+        }
+    }
+    
+
+}
+
+.icon-box {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    @include header-white();
+    a{
+        display: block;
+        padding: 10px 14px;
+    }
+    .global {
+        fill: white;
+    }
+    .log-in{
+        background-color: rgba(128,128,128,.2);
+        border-radius: 20%;
+    }
+    .sign-up{
+        background-color: rgb(11, 196, 226);
+        border-radius: 20%;
+        color: black;
+    }
+}
